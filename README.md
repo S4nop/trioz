@@ -16,7 +16,7 @@
 
 ### 1.3 com.sanop
 
-* `com.sanop.activity` : `Activity`와 이를 상소한 클래스들이 있는 패키지.
+* `com.sanop.activity` : `Activity`와 이를 상속한 클래스들이 있는 패키지.
 * `com.sanop.component` : 렌더링과 관련된 인터페이스가 있는 패키지.
 * `com.sanop.effect` : 화면 이펙트와 관련된 클래스가 있는 패키지.
 * `com.sanop.init` : 게임 초기화와 관련된 클래스가 있는 패키지.
