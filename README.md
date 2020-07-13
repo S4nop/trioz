@@ -1,3 +1,10 @@
+#Trioz - Rhythmic Platformer Game  
+## Introduction
+ 
+이 프로젝트는 성균관대학교 자바 프로그래밍 실습의 과제로 시작되었으며,  
+[DropFL](https://github.com/dropfl)과 함께 진행하던 프로젝트이다.  
+해당 프로젝트의 원본은 [Graphic2DTest](https://github.com/DropFL/Graphics2DTest) 레포지토리에서 확인이 가능하며  
+현재는 [DropFL](https://github.com/dropfl)과 [Sanop](https://github.com/S4nop)이 각자 프로젝트를 이어서 진행하고 있다.
 ## 1.1 res
 게임에 포함된 리소스가 들어있는 패키지이다. 리소스의 종류(그림, 음악 등)에 따라 하위 디렉토리로 분류되어 있다. 이 패키지에는 리소스 외에도 `XResource` 의 이름을 갖는 Enumerator들이 있다. 이는 *X* 타입의 리소스 파일과 프로그램을 연결해주며 해당 리소스와 관련된 프로세스를 내부적으로 처리해주는 역할을 한다.   
 예를 들어, `ImageResource`는 `res/images` 디렉토리 내의 각 이미지 파일과 일대일로 매칭된 객체들을 갖고 있으며, 각 파일로부터 `ImageIcon`을 가져오는 `getImageIcon()` 메서드를 갖고 있다.
