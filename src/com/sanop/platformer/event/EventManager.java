@@ -7,6 +7,7 @@ import com.sanop.platformer.entity.*;
 import res.FontResource;
 import res.ImageResource;
 
+import javax.script.ScriptException;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -16,20 +17,21 @@ public class EventManager {
 	private ArrayList<TickEvent> events;
 	private ArrayList<TickEvent> active;
 	private ArrayList<TickEvent> remove;
-	
+	private Engine engine;
+
 	private static final int offset = 3;
-	
-	public EventManager (Engine engine, ScreenEffectIterator effects) {
+
+	public EventManager (Engine engine, ScreenEffectIterator effects){
 		double beat = 2;
 		final Ghost ghost = new Ghost(300, 600, 32, 32);
 
 		events = new ArrayList<>();
 		active = new ArrayList<>();
 		remove = new ArrayList<>();
-		
+		this.engine = engine;
+
 		// Block initialize
-		addEvent(new BlockEvent(0, Integer.MAX_VALUE,
-				(Integer integer) -> {return null;}, engine.getBlocks(), new Block(-1, 0, 1, 719)));
+		addBlocks(0, Integer.MAX_VALUE, -1, 0, 1, 719);
 		addEvent(new BlockEvent(0, Integer.MAX_VALUE,
 				(Integer integer) -> {return null;}, engine.getBlocks(), new Block(1280, 0, 1, 719)));
 		addEvent(new BlockEvent(0, Integer.MAX_VALUE,
@@ -65,12 +67,17 @@ public class EventManager {
 		//term == 56s
 		addEvent(new EntityEvent(getTickByBeat(beat += 2), 300, new Formula() {
 			@Override
-			public Double[] apply(Integer integer) {
+			public Double[] apply(Integer integer){
 				if(integer == 0)
 					initialize(toPlayerset(10.0, 600.0, engine));
 
 				Double[] vec = (Double[])getInit();
 				Double[] res = {10.0 + vec[0] * 8 * integer, 600.0 + vec[1] * 8 * integer, vec[2]};
+				try {
+					//System.out.println(sEngine.eval("10.0 * 8"));
+					sEngine.put("integer", integer);
+					System.out.println(sEngine.eval("10.0 * 8 * integer"));
+				}catch(ScriptException e){}
 				return res;
 			}
 		}, engine.getEntities(), new Bullet(-100, -100, 50, 100)));
@@ -895,7 +902,12 @@ public class EventManager {
 			}
 		});
 	}
-	
+
+	public void addBlocks(int since, int until, int x, int y, int width, int height){
+		addEvent(new BlockEvent(since, until,
+				(Integer integer) -> {return null;}, engine.getBlocks(), new Block(x, y, width, height)));
+	}
+
 	public void update (int ticks) {
 		while (!events.isEmpty() && events.get(0).getSince() <= ticks) {
 			TickEvent event = events.remove(0);

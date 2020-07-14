@@ -23,6 +23,7 @@ public abstract class Activity {
 	protected VolatileImage image;
 	protected Graphics2D graphics;
 	protected final ArrayList<JComponent> components = new ArrayList<>();
+	protected Object param;
 	
 	public static void init (GameFrame f) {
 		frame = f;
@@ -97,4 +98,10 @@ public abstract class Activity {
 		
 		components.add(btn);
 	}
+
+	public void setParam(Object param){
+		this.param = param;
+	}
+
+	public Object getParam(){ return this.param; }
 }
