@@ -11,6 +11,7 @@ import javax.script.ScriptException;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.function.Function;
 
 public class EventManager {
 
@@ -31,11 +32,12 @@ public class EventManager {
 		this.engine = engine;
 
 		// Block initialize
-		addBlocks(0, Integer.MAX_VALUE, -1, 0, 1, 719);
-		addEvent(new BlockEvent(0, Integer.MAX_VALUE,
-				(Integer integer) -> {return null;}, engine.getBlocks(), new Block(1280, 0, 1, 719)));
-		addEvent(new BlockEvent(0, Integer.MAX_VALUE,
-				(Integer integer) -> {return null;}, engine.getBlocks(), new Block(0, 710, 1280, 100)));
+		//addBlocks(0, Integer.MAX_VALUE, -1, 0, 1, 719);
+		//addEvent(new BlockEvent(0, Integer.MAX_VALUE,
+		//		(Integer integer) -> {return null;}, engine.getBlocks(), new Block(1280, 0, 1, 719)));
+		//addEvent(new BlockEvent(0, Integer.MAX_VALUE,
+		//		(Integer integer) -> {return null;}, engine.getBlocks(), new Block(0, 710, 1280, 100)));
+		/*
 		addEvent(new BlockEvent(0, Integer.MAX_VALUE,
 				(Integer integer) -> {return null;}, engine.getBlocks(), new Block(100, 635, 200, 30)));
 		addEvent(new BlockEvent(0, Integer.MAX_VALUE,
@@ -64,6 +66,7 @@ public class EventManager {
 
 		addEvent(new BlockEvent(0, Integer.MAX_VALUE,
 				(Integer integer) -> {return null;}, engine.getBlocks(), new Block(100, 250, 100, 30)));
+		*/
 		//term == 56s
 		addEvent(new EntityEvent(getTickByBeat(beat += 2), 300, new Formula() {
 			@Override
@@ -903,9 +906,8 @@ public class EventManager {
 		});
 	}
 
-	public void addBlocks(int since, int until, int x, int y, int width, int height){
-		addEvent(new BlockEvent(since, until,
-				(Integer integer) -> {return null;}, engine.getBlocks(), new Block(x, y, width, height)));
+	public void addBlocks(BlockEvent blockEvent){
+	    addEvent(blockEvent);
 	}
 
 	public void update (int ticks) {
@@ -926,7 +928,7 @@ public class EventManager {
 		remove.clear();
 	}
 
-	private void addEvent (TickEvent event) {
+	public void addEvent (TickEvent event) {
 		events.add(event);
 	}
 

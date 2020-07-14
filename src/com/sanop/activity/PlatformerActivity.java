@@ -51,7 +51,7 @@ public class PlatformerActivity extends Activity {
 		engine = new Engine();
 		effects = new ScreenEffectIterator();
 		manager = new EventManager(engine, effects);
-		map = MapResource.TestMap.getMapData().setManager(manager);
+		map = MapResource.TestMap.getMapData().init(manager, engine);
 		//map = ((Map)getParam()).init(engine, effects);
 		bgImage = map.getBgImage();
 		bgm = map.getBgm();
