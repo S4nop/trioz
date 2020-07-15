@@ -7,14 +7,14 @@ import java.awt.*;
 
 public class Bullet extends PlayerInteractive {
 
-	public Bullet (int x, int y, int width, int height) {
+	public Bullet (int x, int y) {
 		this.x = x;
 		this.y = y;
 		this.rotation = 0;
-		this.width = width;
-		this.height = height;
+		this.width = 50;
+		this.height = 100;
 		this.collider = new OBBCollider();
-		this.image = ImageResource.FIRE.getImageIcon().getImage().getScaledInstance(width,height, Image.SCALE_SMOOTH);
+		this.image = ImageResource.FIRE.getImageIcon().getImage().getScaledInstance((int)this.width, (int)this.height, Image.SCALE_SMOOTH);
 	}
 
 	@Override

@@ -3,8 +3,10 @@ package res;
 import com.sanop.platformer.entity.Block;
 import com.sanop.platformer.Map;
 import com.sanop.platformer.event.EventBuffer;
+import com.sanop.platformer.event.Formula;
 
 import java.io.*;
+import java.util.function.Function;
 
 public enum MapResource {
 	
@@ -14,7 +16,7 @@ public enum MapResource {
 	
 	MapResource (String name) {
 		
-		String tmpSplit[];
+		String line_splited[];
 		map = new Map();
 		try {
 			File file = new File(getClass().getResource("maps/" + name).getPath());
@@ -23,18 +25,14 @@ public enum MapResource {
 			String line;
 			
 			while ((line = bufReader.readLine()) != null) {
-				if (line.charAt(0) == '/' || line.charAt(0) == '@') continue;
-				
-				tmpSplit = line.split("::");
-				if (tmpSplit[0].equals("Block"))
-					map.addEvent(EventBuffer.bufType.BLOCK_EVENT,
-							Integer.parseInt(tmpSplit[1]),
-							Integer.parseInt(tmpSplit[2]),
-							Integer.parseInt(tmpSplit[3]),
-							Integer.parseInt(tmpSplit[4]),
-							Integer.parseInt(tmpSplit[5]),
-							Integer.parseInt(tmpSplit[6]),
-							(Integer integer) -> { return null; });
+				line_splited = line.split("::");
+				EventBuffer.bufType type;
+				Function<Integer, Double[]> formula;
+
+				if (line_splited[0].equals("Block"))  type = EventBuffer.bufType.BLOCK_EVENT;
+				else if (line_splited[0].equals("F_Bullet"))  type = EventBuffer.bufType.F_BULLET_EVENT;
+				else continue;
+					map.addEvent(type, line_splited);
 			}
 			
 			bufReader.close();

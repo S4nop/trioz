@@ -31,12 +31,14 @@ public class Map {
 		this.manager = manager;
 		for(EventBuffer e : eventBuffers){
 			if(e.getType() == EventBuffer.bufType.BLOCK_EVENT) manager.addEvent(e.makeBlockEvent(engine));
+			else if(e.getType() == EventBuffer.bufType.F_BULLET_EVENT) manager.addEvent(e.makeFBulletEvent(engine));
 		}
+		manager.sortEvents();
 		return this;
 	}
 
-	public void addEvent (EventBuffer.bufType type, int since, int until, int x, int y, int width, int height, Function<Integer, Double[]> formula) {
-		eventBuffers.add(new EventBuffer(type, since, until, x, y, width, height, formula));
+	public void addEvent (EventBuffer.bufType type, String[] inp) {
+		eventBuffers.add(new EventBuffer(type, inp));
 	}
 
 	public EventManager getManager() {

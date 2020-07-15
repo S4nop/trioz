@@ -9,7 +9,7 @@ import static java.lang.Math.abs;
 
 public class Fireball extends PlayerInteractive{
 
-    public Fireball (int x, int y, int width, int height) {
+    public Fireball (int x, int y) {
         this.x = x;
         this.y = y;
         this.rotation = 0;

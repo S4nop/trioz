@@ -1,17 +1,28 @@
 //Map Size = 1280 * 720( 0 to 1279, 0 to 719)
-//Make Block : Block::Since::Until::X::Y::Width::Height
+//Make Block : Block::Since::Until::X::Y::Width::Height::"X"
+//Make Normal Bullet : Bullet::Since(beat)::Duration::Start_X::Start_Y::Mov_Expr_X::Mov_Expr_Y::Rotation
+//Make Bullet Heading to Player : F_Bullet::Since::Duration::Start_X::Start_Y::Mov_Expr_X::Mov_Expr_Y::Rotation (vec_x, vec_y would be vector heading to player, vec_r would be rotation)
 @MapData
-Block::0::9999::-1::0::1::719
-Block::0::9999::1280::0::1::719
-Block::0::9999::0::710::1280::100
-Block::0::9999::100::635::200::30
-Block::0::9999::980::635::200::30
-Block::0::9999::300::550::200::30
-Block::0::9999::100::450::200::30
-Block::0::9999::980::450::200::30
-Block::0::9999::680::550::200::30
-Block::0::9999::500::350::250::30
-Block::0::9999::200::250::200::30
-Block::0::9999::700::200::150::30
-Block::0::9999::1000::300::200::30
-Block::0::9999::100::250::100::30
+Block::0::9999::-1::0::1::719::X
+Block::0::9999::1280::0::1::719::X
+Block::0::9999::0::710::1280::100::X
+Block::0::9999::100::635::200::30::X
+Block::0::9999::980::635::200::30::X
+Block::0::9999::300::550::200::30::X
+Block::0::9999::100::450::200::30::X
+Block::0::9999::980::450::200::30::X
+Block::0::9999::680::550::200::30::X
+Block::0::9999::500::350::250::30::X
+Block::0::9999::200::250::200::30::X
+Block::0::9999::700::200::150::30::X
+Block::0::9999::1000::300::200::30::X
+Block::0::9999::100::250::100::30::X
+@Entities
+F_Bullet::4::300::10.0::600.0::10.0+vec_x*8*integer::600.0+vec_y*8*integer::vec_r
+F_Bullet::6::300::600.0::00.0::600.0+vec_x*8*integer::0.0+vec_y*8*integer::vec_r
+F_Bullet::8::300::1300.0::500.0::1300.0+vec_x*8*integer::500.0+vec_y*8*integer::vec_r
+F_Bullet::10::300::700.0::800.0::700.0+vec_x*8*integer::800.0+vec_y*8*integer::vec_r
+F_Bullet::12::300::1300.0::0.0::1300.0+vec_x*8*integer::0.0+vec_y*8*integer::vec_r
+F_Bullet::14::300::0.0::0.0::0.0+vec_x*8*integer::0.0+vec_y*8*integer::vec_r
+F_Bullet::16::300::1300.0::0.0::1300.0+vec_x*8*integer::0.0+vec_y*8*integer::vec_r
+F_Bullet::18::300::0.0::0.0::0.0+vec_x*8*integer::0.0+vec_y*8*integer::vec_r
