@@ -32,6 +32,7 @@ public class Map {
 		for(EventBuffer e : eventBuffers){
 			if(e.getType() == EventBuffer.bufType.BLOCK_EVENT) manager.addEvent(e.makeBlockEvent(engine));
 			else if(e.getType() == EventBuffer.bufType.F_BULLET_EVENT) manager.addEvent(e.makeFBulletEvent(engine));
+			else if(e.getType() == EventBuffer.bufType.BULLET_EVENT) manager.addEvent(e.makeNormalBullet(engine));
 		}
 		manager.sortEvents();
 		return this;

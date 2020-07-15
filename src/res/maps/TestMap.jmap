@@ -1,6 +1,6 @@
 //Map Size = 1280 * 720( 0 to 1279, 0 to 719)
 //Make Block : Block::Since::Until::X::Y::Width::Height::"X"
-//Make Normal Bullet : Bullet::Since(beat)::Duration::Start_X::Start_Y::Mov_Expr_X::Mov_Expr_Y::Rotation
+//Make Normal Bullet : Bullet::Since(beat)::Duration::Mov_Expr_X::Mov_Expr_Y::Rotation
 //Make Bullet Heading to Player : F_Bullet::Since::Duration::Start_X::Start_Y::Mov_Expr_X::Mov_Expr_Y::Rotation (vec_x, vec_y would be vector heading to player, vec_r would be rotation)
 @MapData
 Block::0::9999::-1::0::1::719::X
@@ -37,7 +37,6 @@ F_Bullet::34::300::640.0::360.0::640.0+vec_x*8*integer::360.0+vec_y*8*integer::v
 F_Bullet::36::300::800.0::360.0::800.0+vec_x*8*integer::360.0+vec_y*8*integer::vec_r
 F_Bullet::38::300::640.0::60.0::640.0+vec_x*8*integer::60.0+vec_y*8*integer::vec_r
 F_Bullet::40::300::140.0::260.0::140.0+vec_x*8*integer::260.0+vec_y*8*integer::vec_r
-
 F_Bullet::42::300::1000.0*rand::700.0*rand::1000.0*rand+vec_x*8*integer::700.0*rand+vec_y*8*integer::vec_r
 F_Bullet::44::300::1000.0*rand::700.0*rand::1000.0*rand+vec_x*8*integer::700.0*rand+vec_y*8*integer::vec_r
 F_Bullet::46::300::1000.0*rand::700.0*rand::1000.0*rand+vec_x*8*integer::700.0*rand+vec_y*8*integer::vec_r
@@ -48,3 +47,18 @@ F_Bullet::54::300::1000.0*rand::700.0*rand::1000.0*rand+vec_x*8*integer::700.0*r
 F_Bullet::56::300::1000.0*rand::700.0*rand::1000.0*rand+vec_x*8*integer::700.0*rand+vec_y*8*integer::vec_r
 F_Bullet::58::300::1000.0*rand::700.0*rand::1000.0*rand+vec_x*8*integer::700.0*rand+vec_y*8*integer::vec_r
 F_Bullet::60::300::1000.0*rand::700.0*rand::1000.0*rand+vec_x*8*integer::700.0*rand+vec_y*8*integer::vec_r
+
+Bullet::68::300::10.0*integer::360.0::-90.0
+Bullet::68::300::1300 - 10.0*integer::360.0::90.0
+Bullet::68::300::650.0::10.0*integer::90.0
+Bullet::68::300::650.0::720.0 - 10.0*integer::90.0
+
+Bullet::68.5::300::350.0::720.0 - 10.0*integer::90.0
+Bullet::68.5::300::950.0::720.0 - 10.0*integer::90.0
+Bullet::69.5::300::650.0 - 10.0*integer::560.0::90.0
+Bullet::69.5::300::650.0 + 10.0*integer::160.0::90.0
+
+Bullet::70::300::650.0 + 10.0*integer::360.0::-90.0
+Bullet::70::300::650.0 - 10.0*integer::360.0::90.0
+Bullet::70::300::650.0::360.0 + 10.0*integer::90.0
+Bullet::70::300::650.0::360.0 - 10.0*integer::90.0

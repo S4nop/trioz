@@ -1,6 +1,7 @@
 package com.sanop.platformer.entity;
 
 import com.sanop.platformer.collision.OBBCollider;
+import com.sanop.platformer.collision.SquareToCircleCollider;
 import res.ImageResource;
 
 import java.awt.*;
@@ -12,9 +13,9 @@ public class Bullet extends PlayerInteractive {
 		this.y = 0;
 		this.rotation = 0;
 		this.width = 50;
-		this.height = 100;
-		this.collider = new OBBCollider();
-		this.image = ImageResource.FIRE.getImageIcon().getImage().getScaledInstance((int)this.width, (int)this.height, Image.SCALE_SMOOTH);
+		this.height = 50;
+		this.collider = new SquareToCircleCollider();
+		this.image = ImageResource.BULLET_ORB_2.getImageIcon().getImage().getScaledInstance((int)this.width, (int)this.height, Image.SCALE_SMOOTH);
 	}
 
 	@Override

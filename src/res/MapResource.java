@@ -31,6 +31,7 @@ public enum MapResource {
 
 				if (line_splited[0].equals("Block"))  type = EventBuffer.bufType.BLOCK_EVENT;
 				else if (line_splited[0].equals("F_Bullet"))  type = EventBuffer.bufType.F_BULLET_EVENT;
+				else if (line_splited[0].equals("Bullet"))  type = EventBuffer.bufType.BULLET_EVENT;
 				else continue;
 					map.addEvent(type, line_splited);
 			}

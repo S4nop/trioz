@@ -5,6 +5,8 @@ import com.sanop.platformer.entity.Block;
 import com.sanop.platformer.entity.Bullet;
 
 import javax.script.ScriptException;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
 import java.util.function.Function;
 
 import static com.sanop.platformer.Utils.getTickByBeat;
@@ -18,12 +20,15 @@ public class EventBuffer {
         INPUT_EVENT,
         SCREEN_EFFECT_EVENT,
         SPEED_EVENT,
-        F_BULLET_EVENT
+        F_BULLET_EVENT,
+        BULLET_EVENT
     }
 
     private String[] inp;
     private Function<Integer, Double[]> formula;
     private bufType type;
+    ScriptEngineManager mgr = new ScriptEngineManager();
+    ScriptEngine sEngine = mgr.getEngineByName("JavaScript");
 
     public EventBuffer(bufType type, String[] inp){
         this.type = type;
@@ -38,7 +43,8 @@ public class EventBuffer {
     }
 
     public EntityEvent makeFBulletEvent(Engine engine){
-       return new EntityEvent(getTickByBeat(Integer.parseInt(inp[1])), Integer.parseInt(inp[2]), new Formula(){
+       sEngine.put("rand", Math.random());
+       return new EntityEvent(getTickByBeat(Double.parseDouble(inp[1])), Integer.parseInt(inp[2]), new Formula(){
            @Override
            public Double[] apply(Integer integer) {
                try {
@@ -57,6 +63,15 @@ public class EventBuffer {
        }, engine.getEntities(), new Bullet());
     }
 
+    public EntityEvent makeNormalBullet(Engine engine){
+        return new EntityEvent(getTickByBeat(Double.parseDouble(inp[1])), Integer.parseInt(inp[2]), (Integer integer) -> {
+            try {
+                sEngine.put("integer", integer);
+                Double[] res = {(Double)sEngine.eval(inp[3]), (Double)sEngine.eval(inp[4]), (Double)sEngine.eval(inp[5])};
+                return res;
+            }catch(ScriptException e) { System.out.println(e.getMessage()); return null; }
+        }, engine.getEntities(), new Bullet());
+    }
     public bufType getType(){
         return this.type;
     }
