@@ -12,6 +12,10 @@ public abstract class Formula implements Function <Integer,Double[]> {
 	ScriptEngineManager mgr = new ScriptEngineManager();
 	ScriptEngine sEngine = mgr.getEngineByName("JavaScript");
 
+	public Formula(){
+		sEngine.put("rand", Math.random());
+	}
+
 	public abstract Double[] apply (Integer tick);
 	
 	public void initialize (Object init) {

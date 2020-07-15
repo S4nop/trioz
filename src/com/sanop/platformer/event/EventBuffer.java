@@ -41,20 +41,20 @@ public class EventBuffer {
        return new EntityEvent(getTickByBeat(Integer.parseInt(inp[1])), Integer.parseInt(inp[2]), new Formula(){
            @Override
            public Double[] apply(Integer integer) {
-               if(integer == 0)
-                   initialize(toPlayerset(Double.parseDouble(inp[3]), Double.parseDouble(inp[4]), engine));
-
-               Double[] vec = (Double[])getInit();
-               sEngine.put("vec_x", vec[0]);
-               sEngine.put("vec_y", vec[1]);
-               sEngine.put("vec_r", vec[2]);
-               sEngine.put("integer", integer);
                try {
-                   Double[] res = {(Double)sEngine.eval(inp[5]), (Double)sEngine.eval(inp[6]), (Double)sEngine.eval(inp[7])};
-                   return res;
+                    if(integer == 0)
+                        initialize(toPlayerset((Double)sEngine.eval(inp[3]), (Double)sEngine.eval(inp[4]), engine));
+
+                    Double[] vec = (Double[])getInit();
+                    sEngine.put("vec_x", vec[0]);
+                    sEngine.put("vec_y", vec[1]);
+                    sEngine.put("vec_r", vec[2]);
+                    sEngine.put("integer", integer);
+                    Double[] res = {(Double)sEngine.eval(inp[5]), (Double)sEngine.eval(inp[6]), (Double)sEngine.eval(inp[7])};
+                    return res;
                }catch(ScriptException e){ System.out.println(e.getMessage()); return null; }
            }
-       }, engine.getEntities(), new Bullet(-100, -100));
+       }, engine.getEntities(), new Bullet());
     }
 
     public bufType getType(){

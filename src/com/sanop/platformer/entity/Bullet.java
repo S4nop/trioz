@@ -7,9 +7,9 @@ import java.awt.*;
 
 public class Bullet extends PlayerInteractive {
 
-	public Bullet (int x, int y) {
-		this.x = x;
-		this.y = y;
+	public Bullet () {
+		this.x = 0;
+		this.y = 0;
 		this.rotation = 0;
 		this.width = 50;
 		this.height = 100;
