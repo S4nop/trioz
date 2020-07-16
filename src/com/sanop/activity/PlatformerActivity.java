@@ -6,8 +6,11 @@ import com.sanop.music.AdvancedMusicPlayer;
 import com.sanop.key.Key;
 import com.sanop.key.KeyStatus;
 import com.sanop.platformer.Engine;
+import com.sanop.platformer.Map;
 import com.sanop.platformer.Synchronizer;
+import com.sanop.platformer.event.EventManager;
 import res.ImageResource;
+import res.MapResource;
 import res.SoundResource;
 
 import javax.swing.*;
@@ -22,8 +25,10 @@ public class PlatformerActivity extends Activity {
 	private Image bgImage;
 	private Image hpBar;
 	private Image shieldIco;
-	
+
+	private Map map;
 	private Engine engine;
+	private EventManager manager;
 	private AdvancedMusicPlayer bgm;
 	private ScreenEffectIterator effects;
 	private Synchronizer sync;
@@ -43,10 +48,13 @@ public class PlatformerActivity extends Activity {
 	public PlatformerActivity () {
 		
 		title = "Platformer Activity";
-		bgm = new AdvancedMusicPlayer(SoundResource.THE_GHOST);
-		bgImage = ImageResource.MAP_1.getImageIcon().getImage();
 		engine = new Engine();
 		effects = new ScreenEffectIterator();
+		manager = new EventManager(engine, effects);
+		map = MapResource.TestMap.getMapData().init(manager, engine);
+		//map = ((Map)getParam()).init(engine, effects);
+		bgImage = map.getBgImage();
+		bgm = map.getBgm();
 
 		pauseEffect = new ImageOverlayEffect(0, 0, ImageResource.PAUSE_OVERLAY.getImageIcon().getImage(), 0);
 		gameoverEffect = new ImageOverlayEffect(0, 0, ImageResource.GAMEOVER.getImageIcon().getImage(), 0);
@@ -91,7 +99,7 @@ public class PlatformerActivity extends Activity {
 	
 	@Override
 	public void start () {
-		sync = new Synchronizer(engine, bgm, effects);
+		sync = new Synchronizer(engine, bgm, effects, manager);
 		bgm.play(()->requestActivityChange(MainActivity.class));
 		createImage();
 		

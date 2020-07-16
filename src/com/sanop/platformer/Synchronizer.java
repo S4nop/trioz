@@ -15,11 +15,11 @@ public class Synchronizer {
 	private EventManager eventManager;
 	private int ticks;
 	
-	public Synchronizer (Engine engine, MusicPlayer player, ScreenEffectIterator effects) {
+	public Synchronizer (Engine engine, MusicPlayer player, ScreenEffectIterator effects, EventManager manager) {
 		this.engine = engine;
 		this.player = player;
 		this.effects = effects;
-		this.eventManager = new EventManager(engine, effects);
+		this.eventManager = manager;
 		ticks = 0;
 	}
 	

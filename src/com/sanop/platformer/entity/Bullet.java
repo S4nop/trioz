@@ -1,20 +1,21 @@
 package com.sanop.platformer.entity;
 
 import com.sanop.platformer.collision.OBBCollider;
+import com.sanop.platformer.collision.SquareToCircleCollider;
 import res.ImageResource;
 
 import java.awt.*;
 
 public class Bullet extends PlayerInteractive {
 
-	public Bullet (int x, int y, int width, int height) {
-		this.x = x;
-		this.y = y;
+	public Bullet () {
+		this.x = 0;
+		this.y = 0;
 		this.rotation = 0;
-		this.width = width;
-		this.height = height;
-		this.collider = new OBBCollider();
-		this.image = ImageResource.FIRE.getImageIcon().getImage().getScaledInstance(width,height, Image.SCALE_SMOOTH);
+		this.width = 50;
+		this.height = 50;
+		this.collider = new SquareToCircleCollider();
+		this.image = ImageResource.BULLET_ORB_2.getImageIcon().getImage().getScaledInstance((int)this.width, (int)this.height, Image.SCALE_SMOOTH);
 	}
 
 	@Override

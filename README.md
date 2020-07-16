@@ -82,8 +82,8 @@
 `formula`가 `Function` 인터페이스이기에 선언할 때 다소 번거롭지만, 매우 높은 자유도를 통해 더욱 다양한 형태로 제어할 수 있다. 추가적으로 `Formula`라는 추상클래스를 만들어 인터페이스가 갖는 한계를 해소할 수 있다.
 
 ### 2.8 EventManager
-`EventManager`는 게임에 사용될 모든 `TickEvent`의 목록이 정의되고 그것을 제어하는 클래스이다. 현재는 `TickEvent`가 이 안에 하드코딩되어 있으나, 파일로 입력을 받게 되면 초기화할 때의 과부하 문제와 경직성을 해결할 수 있다.
-
+`EventManager`는 게임에 사용될 모든 `TickEvent`의 목록이 정의되고 그것을 제어하는 클래스이다.  
+현재 탄막과 블록은 `MapResource`에서 관리하는 맵 리소스 파일에서 받아오며, 스크린 이펙트는 아직 하드코딩되어 있는 상태이다.
 
 ***
 ## 3. 프로그램 구조
@@ -97,7 +97,7 @@
 `Engine`에서도 `Player` 객체와 `PlayerInteractive` 객체들을 대상으로 `render`를 호출하는 방식으로 렌더링을 수행한다. `Engine`은 자체적인 `tick()` 함수를 통해 한 프레임씩 게임을 진행시킨다. `MusicPlayer`의 진행과 `Engine`, `EventManager` 등의 동기화는 `Synchronizer`를 통해 이루어진다.
 
 ### 3.1 TODO
-1. `EventManager`에 하드코딩된 이벤트를 파일 형태의 map을 사용하도록 구현해야 한다.
+1. `EventManager`에 하드코딩된 스크린이펙트 이벤트를 파일 형태의 map을 사용하도록 구현해야 한다
 2. `OptionActivity`, `SongSelectActivity` 등을 구현해야 한다
 3. 화면 해상도 설정을 구현해야 한다.
 

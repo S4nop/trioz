@@ -10,13 +10,13 @@ public class Ghost extends PlayerInteractive{
 
     private Image wing;
     
-    public Ghost (int x, int y, int width, int height) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+    public Ghost () {
+        this.x = 0;
+        this.y = 0;
+        this.width = 50;
+        this.height = 50;
         this.collider = new SquareToCircleCollider();
-        this.wing = ImageResource.GHOST_2.getImageIcon().getImage().getScaledInstance(3*(width - 5), 3*(height - 5),Image.SCALE_FAST);
+        this.wing = ImageResource.GHOST_2.getImageIcon().getImage().getScaledInstance((int)(3*(width - 5)), (int)(3*(height - 5)),Image.SCALE_FAST);
         //this.image = ImageResource.GHOSTTMP.getImageIcon().getImage().getScaledInstance(width ,height,Image.SCALE_SMOOTH);
     }
 
