@@ -29,7 +29,7 @@ public class EventManager {
 		remove = new ArrayList<>();
 
 
-
+/*
 		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 100, (Integer integer) -> {
 			Double[] res = {0.0, 600.0 , -90.0};
 			return res;
@@ -303,7 +303,7 @@ public class EventManager {
 				return res;
 			}, engine.getEntities(), new Bullet()));
 		}
-
+*/
 		// BEGINNING
 		addEvent(new ScreenEffectEvent(getTickByBeat(4), 30, (Integer integer) -> {
 			Double[] res = {0., 0., 0., (30 - integer) / 30.};

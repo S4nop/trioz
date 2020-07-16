@@ -3,6 +3,7 @@
 //Make Normal Bullet : Bullet::Since(beat)::Duration::Mov_Expr_X::Mov_Expr_Y::Rotation
 //Make Bullet Heading to Player : F_Bullet::Since::Duration::Start_X::Start_Y::Mov_Expr_X::Mov_Expr_Y::Rotation (vec_x, vec_y would be vector heading to player, vec_r would be rotation)
 //Make Laser : Laser::Since::Duration::X::Y::Rotation
+//rand = one time fixed random, aRand = random every time
 @MapData
 Block::0::9999::-1::0::1::719::X
 Block::0::9999::1280::0::1::719::X
@@ -132,5 +133,5 @@ Bullet::75.75::100::1300.0-10.0*integer::500.0::90.0
 Bullet::75.875::100::600.0::10.0*integer::0.0
 Bullet::76::100::700.0::820.0-10.0*integer::180.0
 
-Laser::6::100::0.0::600.0::-90.0
-Fireball::16::300::640.0+3*integer::360.0+integer::0.0
+Laser::16::100::0.0::600.0::-90.0
+Ghost::10::1000::1300.0-aRand*integer::800.0-aRand*integer::0.0

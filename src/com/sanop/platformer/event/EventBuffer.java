@@ -22,11 +22,11 @@ public class EventBuffer {
         F_BULLET_EVENT,
         BULLET_EVENT,
         LASER_EVENT,
-        FIREBALL_EVENT
+        FIREBALL_EVENT,
+        GHOST_EVENT
     }
 
     private String[] inp;
-    private Function<Integer, Double[]> formula;
     private bufType type;
     ScriptEngineManager mgr = new ScriptEngineManager();
     ScriptEngine sEngine = mgr.getEngineByName("JavaScript");
@@ -34,7 +34,7 @@ public class EventBuffer {
     public EventBuffer(bufType type, String[] inp){
         this.type = type;
         this.inp = inp;
-        this.formula = formula;
+        sEngine.put("rand", Math.random());
     }
 
     public BlockEvent makeBlockEvent(Engine engine){
@@ -44,7 +44,6 @@ public class EventBuffer {
     }
 
     public EntityEvent makeFBulletEvent(Engine engine){
-       sEngine.put("rand", Math.random());
        return new EntityEvent(getTickByBeat(Double.parseDouble(inp[1])), Integer.parseInt(inp[2]), new Formula(){
            @Override
            public Double[] apply(Integer integer) {
@@ -57,6 +56,7 @@ public class EventBuffer {
                     sEngine.put("vec_y", vec[1]);
                     sEngine.put("vec_r", vec[2]);
                     sEngine.put("integer", integer);
+                    sEngine.put("aRand", Math.random());
                     Double[] res = {(Double)sEngine.eval(inp[5]), (Double)sEngine.eval(inp[6]), (Double)sEngine.eval(inp[7])};
                     return res;
                }catch(ScriptException e){ System.out.println(e.getMessage()); return null; }
@@ -69,10 +69,12 @@ public class EventBuffer {
         if(type == bufType.LASER_EVENT) entity = new Laser();
         else if(type == bufType.BULLET_EVENT) entity = new Bullet();
         else if(type == bufType.FIREBALL_EVENT) entity = new Fireball();
+        else if(type == bufType.GHOST_EVENT) entity = new Ghost();
         else return null;
         return new EntityEvent(getTickByBeat(Double.parseDouble(inp[1])), Integer.parseInt(inp[2]), (Integer integer) -> {
             try {
                 sEngine.put("integer", integer);
+                sEngine.put("aRand", Math.random());
                 Double[] res = {(Double)sEngine.eval(inp[3]), (Double)sEngine.eval(inp[4]), (Double)sEngine.eval(inp[5])};
                 return res;
             }catch(ScriptException e) { System.out.println(e.getMessage()); return null; }

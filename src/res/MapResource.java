@@ -34,6 +34,7 @@ public enum MapResource {
 				else if (line_splited[0].equals("Bullet"))  type = EventBuffer.bufType.BULLET_EVENT;
 				else if (line_splited[0].equals("Laser")) type = EventBuffer.bufType.LASER_EVENT;
 				else if (line_splited[0].equals("Fireball")) type = EventBuffer.bufType.FIREBALL_EVENT;
+				else if (line_splited[0].equals("Ghost")) type = EventBuffer.bufType.GHOST_EVENT;
 				else continue;
 					map.addEvent(type, line_splited);
 			}

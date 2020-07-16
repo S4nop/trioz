@@ -18,7 +18,7 @@ public class Laser extends PlayerInteractive{
 
     @Override
     public boolean interact(Player player) {
-        player.addHp(-2);
+        player.addHp(-5);
         return false;
     }
     
