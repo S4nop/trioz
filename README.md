@@ -98,7 +98,7 @@
 
 ### 3.1 TODO
 1. `EventManager`에 하드코딩된 스크린이펙트 이벤트를 파일 형태의 map을 사용하도록 구현해야 한다
-2. `OptionActivity`, `SongSelectActivity` 등을 구현해야 한다
+2. `OptionActivity`, `MapSelectActivity` 등을 구현해야 한다
 3. 화면 해상도 설정을 구현해야 한다.
 
 
