@@ -29,9 +29,9 @@ public enum MapResource {
 				if(line.equals("@Entities")) break;
 				line_splited = line.split("::");
 				if(line_splited[0].equals("BGM"))
-					map.setBgm(new AdvancedMusicPlayer(SoundResource.valueOf(line_splited[1])));
+					map.setBgm(SoundResource.valueOf(line_splited[1]));
 				else if(line_splited[0].equals("BGI"))
-					map.setBgImage(ImageResource.valueOf(line_splited[1]).getImageIcon().getImage());
+					map.setBgImage(ImageResource.valueOf(line_splited[1]));
 			}
 			while ((line = bufReader.readLine()) != null) {
 				line_splited = line.split("::");
