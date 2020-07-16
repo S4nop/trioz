@@ -7,21 +7,18 @@ import java.awt.*;
 
 public class Laser extends PlayerInteractive{
     private boolean used = true;
-    public Laser(int x, int y, int width, int height){
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+    public Laser(){
+        this.x = 0;
+        this.y = 0;
+        this.width = 150;
+        this.height = 1300;
         this.collider = new OBBCollider();
-        this.image = ImageResource.LASER_R.getImageIcon().getImage().getScaledInstance(width * 5, height, Image.SCALE_FAST);
+        this.image = ImageResource.LASER_R.getImageIcon().getImage().getScaledInstance((int)this.width * 5, (int)this.height, Image.SCALE_FAST);
     }
 
     @Override
     public boolean interact(Player player) {
-        if(used) {
-            player.addHp(-10);
-            used = false;
-        }
+        player.addHp(-5);
         return false;
     }
     

@@ -5,8 +5,10 @@ import com.sanop.effect.ImageOverlayEffect;
 import com.sanop.music.DefaultMusicPlayer;
 import com.sanop.key.Key;
 import com.sanop.key.KeyStatus;
+import com.sanop.platformer.Map;
 import res.ImageResource;
 import res.SoundResource;
+import res.MapResource;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,6 +27,9 @@ public final class MainActivity extends Activity{
 	private final JButton exit_btn;
 	private final MouseAdapter start_adapter;
 	private final MouseAdapter exit_adapter;
+
+	//TODO : Need to be moved to SelectMapActivity
+	private Map testMap;
 	
 	public MainActivity () {
 		title = "Main Activity";
@@ -34,7 +39,8 @@ public final class MainActivity extends Activity{
 		start_btn = new JButton(ImageResource.BLANK_BUTTON.getImageIcon(226, 68));
 		option_btn = new JButton(ImageResource.BLANK_BUTTON.getImageIcon(226, 68));
 		exit_btn = new JButton(ImageResource.BLANK_BUTTON.getImageIcon(226, 68));
-		
+		testMap = MapResource.TestMap.getMapData();
+
 		start_adapter = new MouseAdapter() {
 			@Override
 			public void mouseClicked (MouseEvent e) {
