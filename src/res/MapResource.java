@@ -1,5 +1,6 @@
 package res;
 
+import com.sanop.music.AdvancedMusicPlayer;
 import com.sanop.platformer.entity.Block;
 import com.sanop.platformer.Map;
 import com.sanop.platformer.event.EventBuffer;
@@ -23,11 +24,18 @@ public enum MapResource {
 			FileReader filereader = new FileReader(file);
 			BufferedReader bufReader = new BufferedReader(filereader);
 			String line;
-			
+
+			while ((line = bufReader.readLine()) != null) {
+				if(line.equals("@Entities")) break;
+				line_splited = line.split("::");
+				if(line_splited[0].equals("BGM"))
+					map.setBgm(new AdvancedMusicPlayer(SoundResource.valueOf(line_splited[1])));
+				else if(line_splited[0].equals("BGI"))
+					map.setBgImage(ImageResource.valueOf(line_splited[1]).getImageIcon().getImage());
+			}
 			while ((line = bufReader.readLine()) != null) {
 				line_splited = line.split("::");
 				EventBuffer.bufType type;
-				Function<Integer, Double[]> formula;
 
 				if (line_splited[0].equals("Block"))  type = EventBuffer.bufType.BLOCK_EVENT;
 				else if (line_splited[0].equals("F_Bullet"))  type = EventBuffer.bufType.F_BULLET_EVENT;

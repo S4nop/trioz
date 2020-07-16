@@ -5,6 +5,9 @@
 //Make Laser : Laser::Since::Duration::X::Y::Rotation
 //rand = one time fixed random, aRand = random every time
 @MapData
+BGM::THE_GHOST
+BGI::MAP_1
+@Entities
 Block::0::9999::-1::0::1::719::X
 Block::0::9999::1280::0::1::719::X
 Block::0::9999::0::710::1280::100::X
@@ -19,7 +22,6 @@ Block::0::9999::200::250::200::30::X
 Block::0::9999::700::200::150::30::X
 Block::0::9999::1000::300::200::30::X
 Block::0::9999::100::250::100::30::X
-@Entities
 F_Bullet::4::300::10.0::600.0::10.0+vec_x*8*integer::600.0+vec_y*8*integer::vec_r
 F_Bullet::6::300::600.0::0.0::600.0+vec_x*8*integer::0+vec_y*8*integer::vec_r
 F_Bullet::8::300::1300.0::500.0::1300.0+vec_x*8*integer::500.0+vec_y*8*integer::vec_r

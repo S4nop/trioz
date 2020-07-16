@@ -19,8 +19,7 @@ public enum SoundResource {
 	private File file;
 	private int length;
 	private float msPerFrame;
-	private int frames;
-	
+
 	SoundResource (String name) {
 		file = new File(getClass().getResource("sounds/" + name).getPath());
 		

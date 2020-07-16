@@ -18,8 +18,8 @@ public class Map {
 	private EventManager manager;
 
 	//TODO : Read From File!!
-	AdvancedMusicPlayer bgm = new AdvancedMusicPlayer(SoundResource.THE_GHOST);
-	Image bgImage = ImageResource.MAP_1.getImageIcon().getImage();
+	AdvancedMusicPlayer bgm;
+	Image bgImage;
 
 	public Map () {
 		eventBuffers = new ArrayList<>();
@@ -52,4 +52,11 @@ public class Map {
 		return bgImage;
 	}
 
+	public void setBgm(AdvancedMusicPlayer bgm){
+		this.bgm = bgm;
+	}
+
+	public void setBgImage(Image bgi){
+		this.bgImage = bgi;
+	}
 }
