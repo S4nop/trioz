@@ -23,132 +23,17 @@ public class EventManager {
 	private static final int offset = 3;
 
 	public EventManager (Engine engine, ScreenEffectIterator effects){
-		double beat = 64;
+		double beat = 76;
 		events = new ArrayList<>();
 		active = new ArrayList<>();
 		remove = new ArrayList<>();
 
-/*
-		beat += 2;
-		addEvent(new EntityEvent(getTickByBeat(beat += 2), 300, (Integer integer) -> {
-			Double[] res = {10.0 * integer, 600.0 , -90.0};
-			return res;
-		}, engine.getEntities(), new Bullet()));
-		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 300, (Integer integer) -> {
-			Double[] res = {1300 -10.0 * integer, 500.0 , 90.0};
-			return res;
-		}, engine.getEntities(), new Bullet()));
-		addEvent(new EntityEvent(getTickByBeat(beat += 0.25), 300, (Integer integer) -> {
-			Double[] res = {600.0, 10.0 *integer , 0.0};
-			return res;
-		}, engine.getEntities(), new Bullet()));
-		addEvent(new EntityEvent(getTickByBeat(beat += 0.25), 300, (Integer integer) -> {
-			Double[] res = {700.0, 820 - 10.0 *integer , 180.0};
-			return res;
-		}, engine.getEntities(), new Bullet()));
-		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 300, (Integer integer) -> {
-			Double[] res = {10.0 * integer, 600.0 , -90.0};
-			return res;
-		}, engine.getEntities(), new Bullet()));
 
-		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 300, (Integer integer) -> {
-			Double[] res = {10.0 * integer, 300.0 , -90.0};
-			return res;
-		}, engine.getEntities(), new Bullet()));
-		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 300, (Integer integer) -> {
-			Double[] res = {1300 -10.0 * integer, 800.0 , 90.0};
-			return res;
-		}, engine.getEntities(), new Bullet()));
-		addEvent(new EntityEvent(getTickByBeat(beat += 0.25), 300, (Integer integer) -> {
-			Double[] res = {800.0, 10.0 *integer , 0.0};
-			return res;
-		}, engine.getEntities(), new Bullet()));
-		addEvent(new EntityEvent(getTickByBeat(beat += 0.25), 300, (Integer integer) -> {
-			Double[] res = {900.0, 820 - 10.0 *integer , 180.0};
-			return res;
-		}, engine.getEntities(), new Bullet()));
-		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 300, (Integer integer) -> {
-			Double[] res = {10.0 * integer, 800.0 , -90.0};
-			return res;
-		}, engine.getEntities(), new Bullet()));
 
-		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 300, (Integer integer) -> {
-			Double[] res = {10.0 * integer, 300.0 + 5.0 * integer , getRadian(10.0, 5.0)};
-			return res;
-		}, engine.getEntities(), new Bullet()));
-		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 300, (Integer integer) -> {
-			Double[] res = {1300 -10.0 * integer, 800.0 - 7.0 * integer , getRadian(-10.0, -7.0)};
-			return res;
-		}, engine.getEntities(), new Bullet()));
-		addEvent(new EntityEvent(getTickByBeat(beat += 0.25), 300, (Integer integer) -> {
-			Double[] res = {800.0 - 5.0 * integer, 10.0 *integer , getRadian(-5.0, 10.0)};
-			return res;
-		}, engine.getEntities(), new Bullet()));
-		addEvent(new EntityEvent(getTickByBeat(beat += 0.25), 300, (Integer integer) -> {
-			Double[] res = {900.0 - 2.0 * integer, 820 - 10.0 *integer , getRadian(-2.0, -10.0)};
-			return res;
-		}, engine.getEntities(), new Bullet()));
-		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 300, (Integer integer) -> {
-			Double[] res = {10.0 * integer, 800.0 , 0.0};
-			return res;
-		}, engine.getEntities(), new Bullet()));
-
-		beat += 0.5;
-		for(int i = 0; i < 8; i++) {
-			final int final_i = i;
-			addEvent(new EntityEvent(getTickByBeat(beat), 300, (Integer integer) -> {
-				Double[] res = {10.0 * integer, 50.0 + 100 * final_i , -90.0};
-				return res;
-			}, engine.getEntities(), new Bullet()));
-		}
-
-		beat += 0.5;
-		for(int i = 0; i < 12; i++){
-			final int final_i = i;
-			addEvent(new EntityEvent(getTickByBeat(beat), 300, (Integer integer) -> {
-				Double[] res = {100.0 * final_i, 10.0 *integer , 0.0};
-				return res;
-			}, engine.getEntities(), new Bullet()));
-		}
-
-		beat += 0.5;
-		for(int i = 0; i < 8; i++){
-			final int final_i = i;
-			addEvent(new EntityEvent(getTickByBeat(beat), 300, (Integer integer) -> {
-				Double[] res = {1300 - 10.0 * integer, 100.0 * final_i , 90.0};
-				return res;
-			}, engine.getEntities(), new Bullet()));
-		}
-
-		beat += 0.5;
-		for(int i = 0; i < 12; i++){
-			final int final_i = i;
-			addEvent(new EntityEvent(getTickByBeat(beat), 300, (Integer integer) -> {
-				Double[] res = {50 + 100.0 * final_i, 800 - 10.0 *integer , 180.0};
-				return res;
-			}, engine.getEntities(), new Bullet()));
-		}
-
-		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 100, (Integer integer) -> {
-			Double[] res = {10.0 * integer, 600.0 , -90.0};
-			return res;
-		}, engine.getEntities(), new Bullet()));
-		addEvent(new EntityEvent(getTickByBeat(beat += 0.25), 100, (Integer integer) -> {
-			Double[] res = {1300 -10.0 * integer, 500.0 , 90.0};
-			return res;
-		}, engine.getEntities(), new Bullet()));
-		addEvent(new EntityEvent(getTickByBeat(beat += 0.125), 100, (Integer integer) -> {
-			Double[] res = {600.0, 10.0 *integer , 0.0};
-			return res;
-		}, engine.getEntities(), new Bullet()));
-		addEvent(new EntityEvent(getTickByBeat(beat += 0.125), 100, (Integer integer) -> {
-			Double[] res = {700.0, 820 - 10.0 *integer , 180.0};
-			return res;
-		}, engine.getEntities(), new Bullet()));
 		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 100, (Integer integer) -> {
 			Double[] res = {0.0, 600.0 , -90.0};
 			return res;
-		}, engine.getEntities(), new Laser(-100, -100, 150, 1300)));
+		}, engine.getEntities(), new Laser()));
 
 		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 100, (Integer integer) -> {
 			Double[] res = {10.0 * integer, 300.0 , -90.0};
@@ -169,7 +54,7 @@ public class EventManager {
 		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 100, (Integer integer) -> {
 			Double[] res = {0.0, 200.0 , -90.0};
 			return res;
-		}, engine.getEntities(), new Laser(-100, -100, 150, 1300)));
+		}, engine.getEntities(), new Laser()));
 
 		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 100, (Integer integer) -> {
 			Double[] res = {10.0 * integer, 300.0 + 5.0 * integer , getRadian(10.0, 5.0)};
@@ -190,24 +75,24 @@ public class EventManager {
 		addEvent(new EntityEvent(getTickByBeat(beat += 0.5) , 100, (Integer integer) -> {
 			Double[] res = {0.0, 400.0 , -90.0};
 			return res;
-		}, engine.getEntities(), new Laser(-100, -100, 150, 1300)));
+		}, engine.getEntities(), new Laser()));
 
 		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 100, (Integer integer) -> {
 			Double[] res = {100.0, -100.0 , 0.0};
 			return res;
-		}, engine.getEntities(), new Laser(-100, -100, 150, 1300)));
+		}, engine.getEntities(), new Laser()));
 		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 100, (Integer integer) -> {
 			Double[] res = {1200.0, -100.0 , 0.0};
 			return res;
-		}, engine.getEntities(), new Laser(-100, -100, 150, 1300)));
+		}, engine.getEntities(), new Laser()));
 		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 100, (Integer integer) -> {
 			Double[] res = {0.0, 600.0 , -90.0};
 			return res;
-		}, engine.getEntities(), new Laser(-100, -100, 150, 1300)));
+		}, engine.getEntities(), new Laser()));
 		addEvent(new EntityEvent(getTickByBeat(beat += 0.5) , 100, (Integer integer) -> {
 			Double[] res = {0.0, 300.0 , -90.0};
 			return res;
-		}, engine.getEntities(), new Laser(-100, -100, 150, 1300)));
+		}, engine.getEntities(), new Laser()));
 
 
 
@@ -216,80 +101,80 @@ public class EventManager {
 		addEvent(new EntityEvent(getTickByBeat(beat += 0.5) , 300, (Integer integer) -> {
 			Double[] res = {640.0 + integer, 360.0 + integer , 0.0};
 			return res;
-		}, engine.getEntities(), new Fireball(-100, -100)));
+		}, engine.getEntities(), new Fireball()));
 		addEvent(new EntityEvent(getTickByBeat(beat) , 300, (Integer integer) -> {
 			Double[] res = {640.0 + 2 * integer, 360.0 + integer, 0.0};
 			return res;
-		}, engine.getEntities(), new Fireball(-100, -100)));
+		}, engine.getEntities(), new Fireball()));
 		addEvent(new EntityEvent(getTickByBeat(beat), 300, (Integer integer) -> {
 			Double[] res = {640.0 + 3 * integer, 360.0 + integer , 0.0};
 			return res;
-		}, engine.getEntities(), new Fireball(-100, -100)));
+		}, engine.getEntities(), new Fireball()));
 
 		addEvent(new EntityEvent(getTickByBeat(beat), 300, (Integer integer) -> {
 			Double[] res = {640.0 - integer, 360.0 + integer, 0.0};
 			return res;
-		}, engine.getEntities(), new Fireball(-100, -100)));
+		}, engine.getEntities(), new Fireball()));
 		addEvent(new EntityEvent(getTickByBeat(beat), 300, (Integer integer) -> {
 			Double[] res = {640.0 - 2 * integer, 360.0 + integer , 0.0};
 			return res;
-		}, engine.getEntities(), new Fireball(-100, -100)));
+		}, engine.getEntities(), new Fireball()));
 		addEvent(new EntityEvent(getTickByBeat(beat), 300, (Integer integer) -> {
 			Double[] res = {640.0 - 3 * integer, 360.0 + integer , 0.0};
 			return res;
-		}, engine.getEntities(), new Fireball(-100, -100)));
+		}, engine.getEntities(), new Fireball()));
 
 		addEvent(new EntityEvent(getTickByBeat(beat), 300, (Integer integer) -> {
 			Double[] res = {640.0 + integer, 360.0 - integer, 0.0};
 			return res;
-		}, engine.getEntities(), new Fireball(-100, -100)));
+		}, engine.getEntities(), new Fireball()));
 		addEvent(new EntityEvent(getTickByBeat(beat), 300, (Integer integer) -> {
 			Double[] res = {640.0 + 2 * integer, 360.0 - integer, 0.0};
 			return res;
-		}, engine.getEntities(), new Fireball(-100, -100)));
+		}, engine.getEntities(), new Fireball()));
 		addEvent(new EntityEvent(getTickByBeat(beat), 300, (Integer integer) -> {
 			Double[] res = {640.0 + 3 * integer, 360.0 - integer, 0.0};
 			return res;
-		}, engine.getEntities(), new Fireball(-100, -100)));
+		}, engine.getEntities(), new Fireball()));
 		addEvent(new EntityEvent(getTickByBeat(beat), 300, (Integer integer) -> {
 			Double[] res = {640.0 - integer, 360.0 - integer, 0.0};
 			return res;
-		}, engine.getEntities(), new Fireball(-100, -100)));
+		}, engine.getEntities(), new Fireball()));
 		addEvent(new EntityEvent(getTickByBeat(beat), 300, (Integer integer) -> {
 			Double[] res = {640.0 - 2 * integer, 360.0 - integer, 0.0};
 			return res;
-		}, engine.getEntities(), new Fireball(-100, -100)));
+		}, engine.getEntities(), new Fireball()));
 		addEvent(new EntityEvent(getTickByBeat(beat), 300, (Integer integer) -> {
 			Double[] res = {640.0 - 3 * integer, 360.0 - integer, 0.0};
 			return res;
-		}, engine.getEntities(), new Fireball(-100, -100)));
+		}, engine.getEntities(), new Fireball()));
 		addEvent(new EntityEvent(getTickByBeat(beat), 300, (Integer integer) -> {
 			Double[] res = {640.0 - 3 * integer, 360.0, 0.0};
 			return res;
-		}, engine.getEntities(), new Fireball(-100, -100)));
+		}, engine.getEntities(), new Fireball()));
 
 		addEvent(new EntityEvent(getTickByBeat(beat), 300, (Integer integer) -> {
 			Double[] res = {640.0 + 3 * integer, 360.0, 0.0};
 			return res;
-		}, engine.getEntities(), new Fireball(-100, -100)));
+		}, engine.getEntities(), new Fireball()));
 
 
 		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 100, (Integer integer) -> {
 			Double[] res = {100.0, -100.0 , 0.0};
 			return res;
-		}, engine.getEntities(), new Laser(-100, -100, 150, 1300)));
+		}, engine.getEntities(), new Laser()));
 		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 100, (Integer integer) -> {
 			Double[] res = {1200.0, -100.0 , 0.0};
 			return res;
-		}, engine.getEntities(), new Laser(-100, -100, 150, 1300)));
+		}, engine.getEntities(), new Laser()));
 		addEvent(new EntityEvent(getTickByBeat(beat += 0.5), 100, (Integer integer) -> {
 			Double[] res = {0.0, 600.0 , -90.0};
 			return res;
-		}, engine.getEntities(), new Laser(-100, -100, 150, 1300)));
+		}, engine.getEntities(), new Laser()));
 		addEvent(new EntityEvent(getTickByBeat(beat += 0.5) , 100, (Integer integer) -> {
 			Double[] res = {0.0, 300.0 , -90.0};
 			return res;
-		}, engine.getEntities(), new Laser(-100, -100, 150, 1300)));
+		}, engine.getEntities(), new Laser()));
 
 
 		for(int i = 0; i < 13; i++){
@@ -312,7 +197,7 @@ public class EventManager {
 		addEvent(new EntityEvent(getTickByBeat(beat += 2) , 100, (Integer integer) -> {
 			Double[] res = {0.0, 600.0 , -90.0};
 			return res;
-		}, engine.getEntities(), new Laser(-100, -100, 150, 1300)));
+		}, engine.getEntities(), new Laser()));
 
 		beat++;
 		for(int i = 0; i < 6; i++) {
@@ -320,7 +205,7 @@ public class EventManager {
 			addEvent(new EntityEvent(getTickByBeat(beat += 0.25), 300, (Integer integer) -> {
 				Double[] res = toCenterRand(1300.0 - 200 * final_i, 0.0, integer);
 				return res;
-			}, engine.getEntities(), new Fireball(-100, -100)));
+			}, engine.getEntities(), new Fireball()));
 		}
 
 		for(int i = 0; i < 6; i++) {
@@ -328,7 +213,7 @@ public class EventManager {
 			addEvent(new EntityEvent(getTickByBeat(beat + 0.25), 300, (Integer integer) -> {
 				Double[] res = toCenterRand(0.0,  0.0 + 100 * final_i, integer);
 				return res;
-			}, engine.getEntities(), new Fireball(-100, -100)));
+			}, engine.getEntities(), new Fireball()));
 		}
 
 		for(int i = 0; i < 6; i++) {
@@ -336,7 +221,7 @@ public class EventManager {
 			addEvent(new EntityEvent(getTickByBeat(beat += 0.25), 300, (Integer integer) -> {
 				Double[] res = toCenterRand(1300.0 - 200 * final_i, 720.0, integer);
 				return res;
-			}, engine.getEntities(), new Fireball(-100, -100)));
+			}, engine.getEntities(), new Fireball()));
 		}
 
 		for(int i = 0; i < 6; i++) {
@@ -344,7 +229,7 @@ public class EventManager {
 			addEvent(new EntityEvent(getTickByBeat(beat + 0.25), 300, (Integer integer) -> {
 				Double[] res = toCenterRand(1300.0,  0.0 + 100 * final_i, integer);
 				return res;
-			}, engine.getEntities(), new Fireball(-100, -100)));
+			}, engine.getEntities(), new Fireball()));
 		}
 
 		beat += 6;
@@ -418,7 +303,7 @@ public class EventManager {
 				return res;
 			}, engine.getEntities(), new Bullet()));
 		}
-*/
+
 		// BEGINNING
 		addEvent(new ScreenEffectEvent(getTickByBeat(4), 30, (Integer integer) -> {
 			Double[] res = {0., 0., 0., (30 - integer) / 30.};

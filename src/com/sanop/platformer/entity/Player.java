@@ -109,7 +109,7 @@ public final class Player extends Entity {
 	public void		addHp (int deltaHp) {
 		if(hitDelay > 0) return;
 		
-		hitDelay = 60;
+		hitDelay = 10;
 		
 		if (isShieldOn && deltaHp < 0) {
 			isShieldOn = false;

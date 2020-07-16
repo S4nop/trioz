@@ -1,8 +1,7 @@
 package com.sanop.platformer.event;
 
 import com.sanop.platformer.Engine;
-import com.sanop.platformer.entity.Block;
-import com.sanop.platformer.entity.Bullet;
+import com.sanop.platformer.entity.*;
 
 import javax.script.ScriptException;
 import javax.script.ScriptEngine;
@@ -21,7 +20,9 @@ public class EventBuffer {
         SCREEN_EFFECT_EVENT,
         SPEED_EVENT,
         F_BULLET_EVENT,
-        BULLET_EVENT
+        BULLET_EVENT,
+        LASER_EVENT,
+        FIREBALL_EVENT
     }
 
     private String[] inp;
@@ -63,14 +64,19 @@ public class EventBuffer {
        }, engine.getEntities(), new Bullet());
     }
 
-    public EntityEvent makeNormalBullet(Engine engine){
+    public EntityEvent makeNormalEntityEvent(Engine engine, bufType type){
+        PlayerInteractive entity;
+        if(type == bufType.LASER_EVENT) entity = new Laser();
+        else if(type == bufType.BULLET_EVENT) entity = new Bullet();
+        else if(type == bufType.FIREBALL_EVENT) entity = new Fireball();
+        else return null;
         return new EntityEvent(getTickByBeat(Double.parseDouble(inp[1])), Integer.parseInt(inp[2]), (Integer integer) -> {
             try {
                 sEngine.put("integer", integer);
                 Double[] res = {(Double)sEngine.eval(inp[3]), (Double)sEngine.eval(inp[4]), (Double)sEngine.eval(inp[5])};
                 return res;
             }catch(ScriptException e) { System.out.println(e.getMessage()); return null; }
-        }, engine.getEntities(), new Bullet());
+        }, engine.getEntities(), entity);
     }
     public bufType getType(){
         return this.type;

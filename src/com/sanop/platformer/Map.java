@@ -1,7 +1,6 @@
 package com.sanop.platformer;
 
 import com.sanop.music.AdvancedMusicPlayer;
-import com.sanop.platformer.entity.Block;
 import com.sanop.platformer.entity.PlayerInteractive;
 import com.sanop.platformer.event.BlockEvent;
 import com.sanop.platformer.event.EventBuffer;
@@ -11,7 +10,6 @@ import res.SoundResource;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.function.Function;
 
 public class Map {
 	private ArrayList<BlockEvent> blockEvents;
@@ -32,7 +30,7 @@ public class Map {
 		for(EventBuffer e : eventBuffers){
 			if(e.getType() == EventBuffer.bufType.BLOCK_EVENT) manager.addEvent(e.makeBlockEvent(engine));
 			else if(e.getType() == EventBuffer.bufType.F_BULLET_EVENT) manager.addEvent(e.makeFBulletEvent(engine));
-			else if(e.getType() == EventBuffer.bufType.BULLET_EVENT) manager.addEvent(e.makeNormalBullet(engine));
+			else manager.addEvent(e.makeNormalEntityEvent(engine, e.getType()));
 		}
 		manager.sortEvents();
 		return this;
